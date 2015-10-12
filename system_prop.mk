@@ -71,10 +71,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     net.tethering.noprovisioning=true
 
-# USB
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.isUsbOtgEnabled=true
-
 # Other
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.disable=true \
