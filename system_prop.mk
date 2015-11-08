@@ -59,6 +59,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1 \
     ro.telephony.ril_class=LgeLteRIL
     persist.data.netmgrd.qos.enable=false \
+    persist.data.qmi.adb_logmask=0 \
     ro.use_data_netmgrd=true
     
 # Recovery
