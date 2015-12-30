@@ -63,10 +63,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=false \
     persist.data.qmi.adb_logmask=0 \
     ro.use_data_netmgrd=true
-    
-# Recovery
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cwm.forbid_format=/boot,/firmware,/mpt,/persist,/persist-lg,/sns
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
