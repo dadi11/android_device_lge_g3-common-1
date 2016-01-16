@@ -1,0 +1,3 @@
+add_lunch_combo pac_d855-user
+add_lunch_combo pac_d855-userdebug
+add_lunch_combo pac_d855-eng

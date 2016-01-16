@@ -50,6 +50,8 @@ endif
 TARGET_KERNEL_SOURCE := kernel/lge/g3
 
 # Audio
+TARGET_QCOM_AUDIO_VARIANT := caf-msm8974
+TARGET_QCOM_MEDIA_VARIANT := caf-msm8974
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 USE_CUSTOM_AUDIO_POLICY := 1
@@ -94,6 +96,7 @@ USE_OPENGL_RENDERER := true
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
+TARGET_QCOM_DISPLAY_VARIANT := caf-msm8974
 HAVE_ADRENO_SOURCE:= false
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 TARGET_USE_COMPAT_GRALLOC_PERFORM := true
@@ -149,7 +152,7 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TW_NO_SCREEN_TIMEOUT := true
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
+include device/qcom/sepolicy-caf/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/lge/g3-common/sepolicy
 
 # Time services
