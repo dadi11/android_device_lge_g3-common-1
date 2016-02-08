@@ -122,28 +122,33 @@ BOARD_USES_QCOM_HARDWARE := true
 # Recovery
 BOARD_SUPPRESS_EMMC_WIPE := true
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # TWRP specific build flags
+RECOVERY_VARIANT := twrp
 DEVICE_RESOLUTION := 1440x2560
+TW_THEME := portrait_hdpi
+BOARD_HAS_LARGE_FILESYSTEM := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_NO_USB_STORAGE := true
 TW_INCLUDE_JB_CRYPTO := true
 TW_INCLUDE_L_CRYPTO := true
 TW_INCLUDE_CRYPTO := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_SDCARD_ON_DATA := true
-BOARD_HAS_NO_REAL_SDCARD := true
 TW_BRIGHTNESS_PATH := "/sys/devices/mdp.0/qcom\x2cmdss_fb_primary.175/leds/lcd-backlight/brightness"
-TW_THEME := portrait_hdpi
 TW_MAX_BRIGHTNESS := 255
-TW_SCREEN_BLANK_ON_BOOT := true
-TW_NO_SCREEN_TIMEOUT := true
+TW_DEFAULT_BRIGHTNESS := 175
+TW_FLASH_FROM_STORAGE := true
+TW_TARGET_USES_QCOM_BSP := true
+TW_EXTRA_LANGUAGES := true
+TW_INCLUDE_NTFS_3G := true
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_USES_LOGD := true
+TWRP_INCLUDE_LOGCAT := true
 
 # SELinux
-include device/qcom/sepolicy-caf/sepolicy.mk
+include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/lge/g3-common/sepolicy
 
 # Time services
