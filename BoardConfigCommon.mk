@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2016 The PacRom Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -75,15 +75,15 @@ BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/lge_touch/tap_to_wake"
 
 # Enable dex-preoptimization to speed up first boot sequence
-ifeq ($(HOST_OS),linux)
-  ifeq ($(TARGET_BUILD_VARIANT),user)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-      DONT_DEXPREOPT_PREBUILTS := true
-    endif
-  endif
-endif
-WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
+ ifeq ($(HOST_OS),linux)
+   ifeq ($(TARGET_BUILD_VARIANT),user)
+     ifeq ($(WITH_DEXPREOPT),)
+       WITH_DEXPREOPT := true
+     endif
+   endif
+ endif
+ DONT_DEXPREOPT_PREBUILTS := true
+ WITH_DEXPREOPT_BOOT_IMG_ONLY := true
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
@@ -120,30 +120,38 @@ BOARD_RIL_CLASS += ../../../device/lge/g3-common/ril
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-BOARD_SUPPRESS_EMMC_WIPE := true
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# TWRP specific build flags
-DEVICE_RESOLUTION := 1440x2560
-TW_THEME := portrait_hdpi
+# Edited for TWRP Recovery
+TWRP_INCLUDE_LOGCAT := true
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_HAS_NO_SELECT_BUTTON := true
+TW_HAS_DOWNLOAD_MODE := true
 BOARD_HAS_LARGE_FILESYSTEM := true
+DEVICE_RESOLUTION := 1440x2560
+TW_NO_USB_STORAGE := true
+TW_CRYPTO_FS_TYPE := "ext4"
+TW_NO_EXFAT_FUSE := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_SUPPRESS_EMMC_WIPE := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_THEME := portrait_hdpi
+DEVICE_RESOLUTION := 1440x2560
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_INCLUDE_JB_CRYPTO := true
+TW_EXTRA_LANGUAGES := true
+TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_INCLUDE_L_CRYPTO := true
 TW_INCLUDE_CRYPTO := true
-BOARD_SUPPRESS_SECURE_ERASE := true
-RECOVERY_SDCARD_ON_DATA := true
 TW_BRIGHTNESS_PATH := "/sys/devices/mdp.0/qcom\x2cmdss_fb_primary.175/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 175
-TW_FLASH_FROM_STORAGE := true
-TW_TARGET_USES_QCOM_BSP := true
-TW_EXTRA_LANGUAGES := true
-TARGET_HW_DISK_ENCRYPTION := true
 TARGET_USES_LOGD := true
-TWRP_INCLUDE_LOGCAT := true
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_EXCLUDE_SUPERSU := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
@@ -151,3 +159,6 @@ BOARD_SEPOLICY_DIRS += device/lge/g3-common/sepolicy
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
+
+# Enable Minikin text layout engine
+USE_MINIKIN := true
